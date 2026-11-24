@@ -1,0 +1,17 @@
+{
+  "uuid": "dock-glass@atarico.github.io",
+  "name": "Dock Glass (ubuntu-dock-plus)",
+  "description": "Makes Ubuntu Dock feel like the macOS Dock: a glass pill, magnification, launch, click and attention bounces, a genie effect, stacks for Files and Downloads, unpinning by dragging an icon off the dock, and a top bar menu with a preferences window. Based on Dock Glass by atarico.",
+  "url": "https://github.com/GyoungTaeChae/ubuntu-dock-plus",
+  "shell-version": [
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "51"
+  ],
+  "gettext-domain": "dock-glass@atarico.github.io",
+  "version-name": "0.2-plus.1",
+  "settings-schema": "org.gnome.shell.extensions.ubuntu-dock-plus"
+}

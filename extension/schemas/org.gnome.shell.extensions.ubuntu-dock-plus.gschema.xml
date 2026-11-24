@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Settings that ubuntu-dock-plus adds to Dock Glass. The dock's own
+     settings (icon size, opacity, hiding, click action, trash) stay in
+     org.gnome.shell.extensions.dash-to-dock. -->
+<schemalist gettext-domain="dock-glass@atarico.github.io">
+  <schema id="org.gnome.shell.extensions.ubuntu-dock-plus" path="/org/gnome/shell/extensions/ubuntu-dock-plus/">
+    <key name="genie" type="b">
+      <default>true</default>
+      <summary>Genie effect when a window opens, minimizes or is restored; off uses GNOME's own animation</summary>
+    </key>
+    <key name="genie-duration" type="i">
+      <range min="200" max="1500"/>
+      <default>550</default>
+      <summary>Genie duration in milliseconds</summary>
+    </key>
+    <key name="magnify" type="b">
+      <default>true</default>
+      <summary>Magnify icons under the pointer</summary>
+    </key>
+    <key name="magnify-peak" type="d">
+      <range min="1.0" max="1.8"/>
+      <default>1.6</default>
+      <summary>Largest magnification, under the pointer</summary>
+    </key>
+    <key name="launch-bounce" type="b">
+      <default>true</default>
+      <summary>Bounce an icon until the app it launches shows a window</summary>
+    </key>
+    <key name="click-bounce" type="b">
+      <default>true</default>
+      <summary>Bounce once when a running app's icon is clicked</summary>
+    </key>
+    <key name="attention-bounce" type="b">
+      <default>true</default>
+      <summary>Bounce an app's icon when one of its windows asks for attention</summary>
+    </key>
+    <key name="bounce-height" type="i">
+      <range min="8" max="40"/>
+      <default>22</default>
+      <summary>Bounce height in pixels</summary>
+    </key>
+    <key name="show-dots" type="b">
+      <default>true</default>
+      <summary>Dot under the icons of running apps</summary>
+    </key>
+    <key name="stack-view" type="s">
+      <choices>
+        <choice value="fan"/>
+        <choice value="grid"/>
+      </choices>
+      <default>'fan'</default>
+      <summary>How stacks open: a fan of up to ten items, or a grid</summary>
+    </key>
+    <key name="stack-sort" type="s">
+      <choices>
+        <choice value="added"/>
+        <choice value="name"/>
+      </choices>
+      <default>'added'</default>
+      <summary>Order of the Downloads stack: newest first, or by name</summary>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Downloads
+Name[ko]=다운로드
+Comment=Open the Downloads folder
+Comment[ko]=다운로드 폴더를 엽니다
+Exec=nautilus --new-window "@DOWNLOADS@"
+Icon=folder-download
+Terminal=false
+StartupNotify=false
+Categories=Utility;

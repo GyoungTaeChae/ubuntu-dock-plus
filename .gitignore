@@ -1,0 +1,6 @@
+# Development only, kept out of the published repository: the hidden-shell
+# test harness, the design mockup and the upstream Dock Glass checkout used
+# for comparison.
+harness/
+mockup/
+dock-glass/

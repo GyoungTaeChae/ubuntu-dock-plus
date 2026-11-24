@@ -1,0 +1,168 @@
+# Korean translation of Dock Glass (ubuntu-dock-plus).
+# SPDX-License-Identifier: GPL-3.0-or-later
+msgid ""
+msgstr ""
+"Project-Id-Version: dock-glass\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Also used when a window opens or is restored"
+msgstr "창을 열거나 되살릴 때도 씁니다"
+
+msgid "Always"
+msgstr "항상"
+
+msgid "Appearance"
+msgstr "모양"
+
+msgid "Background"
+msgstr "배경"
+
+msgid "Behavior"
+msgstr "동작"
+
+msgid "Bounce"
+msgstr "튀기"
+
+msgid "Bounce height (px)"
+msgstr "튀는 높이 (px)"
+
+msgid "Bounce when a running app is clicked"
+msgstr "실행 중인 앱을 누르면 튀기"
+
+msgid "Bounce when an app asks for attention"
+msgstr "앱이 알림을 보내면 튀기"
+
+msgid "Bounce while an app launches"
+msgstr "앱이 실행되는 동안 튀기"
+
+msgid "Bring to front"
+msgstr "앞으로 가져오기만"
+
+msgid "Click on a running app"
+msgstr "실행 중인 앱 아이콘을 누르면"
+
+msgid "Dock"
+msgstr "독"
+
+msgid "Dock Settings…"
+msgstr "독 설정…"
+
+msgid "Dots under running apps"
+msgstr "열린 앱 아래에 점 표시"
+
+msgid "Downloads order"
+msgstr "다운로드 정렬"
+
+msgid "Effects"
+msgstr "효과"
+
+msgid "Fan"
+msgstr "부채꼴"
+
+msgid "Files"
+msgstr "파일"
+
+msgid "Files and Downloads open as"
+msgstr "파일과 다운로드를 펼치는 방식"
+
+msgid "Genie"
+msgstr "지니"
+
+msgid "Genie duration (ms)"
+msgstr "지니 시간 (ms)"
+
+msgid "Grid"
+msgstr "격자"
+
+msgid "Hide the dock"
+msgstr "독 가리기"
+
+msgid "Home"
+msgstr "홈"
+
+msgid "Icon size"
+msgstr "아이콘 크기"
+
+msgid "Icons"
+msgstr "아이콘"
+
+msgid "Icons grow under the pointer"
+msgstr "포인터 아래 아이콘이 커집니다"
+
+msgid "Indicators"
+msgstr "표시"
+
+msgid "Magnification"
+msgstr "확대 배율"
+
+msgid "Magnify on hover"
+msgstr "포인터를 올리면 확대"
+
+msgid "Minimize effect"
+msgstr "최소화 효과"
+
+msgid "Minimize or bring to front"
+msgstr "최소화하거나 앞으로 가져오기"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Never"
+msgstr "가리지 않기"
+
+msgid "Newest first"
+msgstr "최근 항목 먼저"
+
+msgid "Opacity"
+msgstr "불투명도"
+
+msgid "Open Files"
+msgstr "파일 열기"
+
+msgid "Open in Files"
+msgstr "파일에서 열기"
+
+msgid "Remove"
+msgstr "제거"
+
+msgid "Scale"
+msgstr "축소"
+
+msgid "Show Trash"
+msgstr "휴지통 표시"
+
+msgid "Stacks"
+msgstr "스택"
+
+msgid "View"
+msgstr "보기 방식"
+
+msgid "When a window covers it"
+msgstr "창이 겹칠 때"
+
+msgid "Windows"
+msgstr "창"
+msgid "About"
+msgstr "정보"
+
+msgid "ubuntu-dock-plus %s, based on Dock Glass by atarico.\nFree software under the GNU General Public License, version 3 or later. It comes with ABSOLUTELY NO WARRANTY."
+msgstr "ubuntu-dock-plus %s. atarico의 Dock Glass를 바탕으로 만들었습니다.\nGNU 일반 공중 사용 허가서 3판 이상을 따르는 자유 소프트웨어이며, 어떠한 보증도 하지 않습니다."
+
+msgid "Large icons stay smaller, to fit inside the dock"
+msgstr "아이콘이 크면 독 안에 들어가도록 덜 커집니다"
+
+msgid "Reset to Defaults"
+msgstr "기본값으로 초기화"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Apply"
+msgstr "적용"
+
+msgid "OK"
+msgstr "확인"
