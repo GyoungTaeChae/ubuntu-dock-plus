@@ -9,7 +9,8 @@
 // Modified by ubuntu-dock-plus on 2026-11-24: the Downloads stack, settings
 // that apply at once (genie, magnification, bounces, dots, stacks), a click
 // bounce and an attention bounce, the top bar menu (panel.js) and unpinning
-// by dragging an icon off the dock (dragRemove.js).
+// by dragging an icon off the dock (dragRemove.js). 2026-11-25: icon
+// textures load at the magnification peak size, so magnified icons stay sharp.
 import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import Meta from 'gi://Meta';
@@ -112,8 +113,8 @@ export default class DockGlassExtension extends Extension {
         this._settings.connectObject(
             'changed::genie', () => this._syncGenie(),
             'changed::genie-duration', () => setGenieDuration(this._settings.get_int('genie-duration')),
-            'changed::magnify', () => this._wakeAllMagnifiers(),
-            'changed::magnify-peak', () => this._wakeAllMagnifiers(),
+            'changed::magnify', () => this._onPeakChanged(),
+            'changed::magnify-peak', () => this._onPeakChanged(),
             'changed::show-dots', () => this._syncDots(),
             this);
         global.display.connectObject(
@@ -174,6 +175,37 @@ export default class DockGlassExtension extends Extension {
             this._genieAnimation.enable();
         else
             this._genieAnimation.disable();
+    }
+
+    // The magnification peak under the pointer for icons of `iconSize` px.
+    _peak(iconSize) {
+        return Math.min(this._settings.get_double('magnify-peak'),
+            1 + MAGNIFY_HEADROOM_PX / iconSize);
+    }
+
+    _onPeakChanged() {
+        for (const {icon} of this._buttons.values())
+            this._syncIconTexture(icon);
+        this._wakeAllMagnifiers();
+    }
+
+    // ubuntu-dock-plus: an icon texture loaded at the dock size looks blurred
+    // once the magnifier scales it up, so load it at the peak size and draw it
+    // at the dock size. The St.Icon keeps the dock size as its fixed size, so
+    // the dock layout does not change.
+    _syncIconTexture(icon) {
+        const texture = icon.icon;
+        const size = icon.iconSize;
+        if (!(texture instanceof St.Icon) || !size)
+            return;
+        const peak = this._settings?.get_boolean('magnify') ? this._peak(size) : 1;
+        texture.icon_size = Math.ceil(size * peak);
+        if (peak > 1) {
+            const {scaleFactor} = St.ThemeContext.get_for_stage(global.stage);
+            texture.set_size(size * scaleFactor, size * scaleFactor);
+        } else {
+            texture.set_size(-1, -1);
+        }
     }
 
     // A magnifier fades out by itself once magnification is off.
@@ -522,6 +554,9 @@ export default class DockGlassExtension extends Extension {
 
         this._buttons.set(button, {icon, dock, stopFocusSync: keepFocusInSync(button)});
         icon.set_pivot_point(0.5, 1);
+        // The dock replaces the St.Icon when the icon size or theme changes.
+        icon._iconBin?.connectObject('notify::child', () => this._syncIconTexture(icon), this);
+        this._syncIconTexture(icon);
         button.connectObject('destroy', () => {
             this._stopBounce(button, false);
             this._buttons.get(button).stopFocusSync();
@@ -602,6 +637,11 @@ export default class DockGlassExtension extends Extension {
         icon.remove_all_transitions();
         icon.set_scale(1, 1);
         icon.set_pivot_point(0, 0);
+        icon._iconBin?.disconnectObject(this);
+        if (icon.icon instanceof St.Icon && icon.iconSize) {
+            icon.icon.icon_size = icon.iconSize;
+            icon.icon.set_size(-1, -1);
+        }
         button.translation_x = 0;
     }
 
@@ -705,8 +745,7 @@ export default class DockGlassExtension extends Extension {
                 separators: rest.separator ? [rest.separatorCenter] : [],
                 pointer: magnifier.pointer ?? pointerX,
                 radius: MAGNIFY_RADIUS_SLOTS * rest.slot,
-                peak: Math.min(this._settings.get_double('magnify-peak'),
-                    1 + MAGNIFY_HEADROOM_PX / dock.iconSize),
+                peak: this._peak(dock.iconSize),
                 strength: fadedOut ? 0 : magnifier.strength,
                 start: rest.start,
                 end: rest.end,
